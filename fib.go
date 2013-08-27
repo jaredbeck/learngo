@@ -2,14 +2,18 @@ package main
 
 import "fmt"
 
-func fib(a, b int) {
-  var c = a + b
-  fmt.Println(c)
-  if c < 100 {
-    fib(b, c)
+const Limit uint32 = 2147483648
+
+func fib(a, b uint32) uint32 {
+  var c uint32 = a + b
+  if c < Limit {
+    return fib(b, c)
+  } else {
+    return c
   }
 }
 
 func main() {
-  fib(1, 1)
+  var derp = fib(1, 1)
+  fmt.Println(derp)
 }
